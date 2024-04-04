@@ -13,6 +13,7 @@ function writeUserData(soat, mn, som ) {
     narx: som+'000',
     joy:mn,
     vaqat:soat,
+    name:localStorage.getItem('name'),
   });
 }
 
@@ -23,7 +24,6 @@ function Kirim() {
     const [som, setSom]=useState('');
     const [mal, setMal]=useState([])
     const nv=useNavigate();
-
        useEffect(()=>{
         if (localStorage.getItem('pr')!=2345) {
             nv('/')
@@ -33,20 +33,25 @@ function Kirim() {
         const data = snapshot.val();    
         if (data) {
             setMal(Object.values(data))
+            setTimeout(()=>{
+                window.scrollTo(0,document.body.scrollHeight);
+            }, 100)
         }
 });
+
     }, [])
 
 
     function Royhat(m){
+          
         return(
-            <div className="w-full h-[134px] bg-[#1E2139] rounded-lg text-white flex p-5 justify-between" key={m.vaqat}>
+            <div className="w-full h-[134px] bg-[#1E2139] rounded-lg text-white flex p-5 justify-between hg" key={m.vaqat}>
             <div>
                 <h3>{m.joy}</h3>
                 <h4>{m.vaqat.slice(0, -4)}</h4>
                 <p>{(+m.narx).toLocaleString('it-IT', { style: 'decimal', currency: 'som'})}</p>
             </div>
-            <h2>Name</h2>
+            <h2>{m.name}</h2>
         </div>
         )
     }
@@ -67,10 +72,10 @@ function Kirim() {
         setMn('');
         setSom('')
     }
-
+    
   return (
     <div className="w-full">
-    <div className="flex flex-col items-center w-full gap-2 pt-20 pb-24  px-6">
+    <div className="flex flex-col items-center w-full gap-2 pt-20 pb-24 z-[-1] px-6">
 
 
     {mal.length==0 ? '': mal.map(m=>Royhat(m))}

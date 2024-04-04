@@ -24,3 +24,16 @@
     box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #FFDD1B, 0 0 25px #FFDD1B, 0 0 10px #FFDD1B, 0 0 24px #FFDD1B, 0 0 35px #FFDD1B;
   }
 }
+
+.hg{
+  animation: spi 500ms linear forwards;
+}
+
+@keyframes spi {
+  from {
+  width: 0;
+  }
+  to {
+    width: 100%;
+    }
+}

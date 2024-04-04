@@ -8,9 +8,12 @@ function Kod() {
     
 
     function hendl(){
-        if(pas==2345){
+        if(pas==1014 || pas==3430){
             nvg('/krim')
             localStorage.setItem('pr', 2345)
+            if (pas==1014) {
+              localStorage.setItem('name', 'Alijon')
+            } else   localStorage.setItem('name', 'Ikromjon')
             return;
         }
         setPas('')

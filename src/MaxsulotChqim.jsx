@@ -13,6 +13,7 @@ function writeUserData(soat, mn, som ) {
     narx: som+'000',
     joy:mn,
     vaqat:soat,
+    name:localStorage.getItem('name')
   });
 }
 
@@ -34,6 +35,9 @@ function MaxsulotChqim() {
         const data = snapshot.val();
         if (data) {
             setMal(Object.values(data))
+            setTimeout(()=>{
+                window.scrollTo(0,document.body.scrollHeight);
+            }, 100)
         }
 });
     }, [])
@@ -41,13 +45,13 @@ function MaxsulotChqim() {
 
     function Royhat(m){
         return(
-            <div className="w-full h-[134px] bg-[#1E2139] rounded-lg text-white flex p-5 justify-between" key={m.vaqat}>
+            <div className="w-full hg h-[134px] bg-[#1E2139] rounded-lg text-white flex p-5 justify-between" key={m.vaqat}>
             <div>
                 <h3>{m.joy}</h3>
                 <h4>{m.vaqat.slice(0, -4)}</h4>
                 <p>{(+m.narx).toLocaleString('it-IT', { style: 'decimal', currency: 'som'})}</p>
             </div>
-            <h2>Name</h2>
+            <h2>{m.name}</h2>
         </div>
         )
     }
