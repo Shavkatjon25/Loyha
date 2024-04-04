@@ -9,7 +9,7 @@ import Logo from "./Logo";
 function writeUserData(soat, mn, som ) {
 
   set(ref(db, 'maxsulotchqim/' + soat), {
-    narx: som,
+    narx: som+'000',
     joy:mn,
     vaqat:soat,
   });
@@ -25,7 +25,6 @@ function MaxsulotChqim() {
         const starCountRef = ref(db, 'maxsulotchqim');
         onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();
-        console.log(data);
         if (data) {
             setMal(Object.values(data))
         }

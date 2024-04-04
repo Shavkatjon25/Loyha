@@ -3,13 +3,12 @@ import { useEffect, useState } from "react"
 import { ref, set, onValue } from "firebase/database";
 import { db } from "./Firebase";
 import Foot from "./Foot";
-import Logo from "./Logo";
 
 
 function writeUserData(soat, mn, som ) {
 
   set(ref(db, 'chqim/' + soat), {
-    narx: som,
+    narx: som+'000',
     joy:mn,
     vaqat:soat,
   });
@@ -24,8 +23,7 @@ function Chqim() {
     useEffect(()=>{
         const starCountRef = ref(db, 'chqim');
         onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        console.log(data);
+        const data = snapshot.val();    
         if (data) {
             setMal(Object.values(data))
         }

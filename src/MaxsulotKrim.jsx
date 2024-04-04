@@ -3,13 +3,12 @@ import { useEffect, useState } from "react"
 import { ref, set, onValue } from "firebase/database";
 import { db } from "./Firebase";
 import Foot from "./Foot";
-import Logo from "./Logo";
 
 
 function writeUserData(soat, mn, som ) {
 
   set(ref(db, 'maxsulotkrim/' + soat), {
-    narx: som,
+    narx: som+'000',
     joy:mn,
     vaqat:soat,
   });
@@ -24,8 +23,7 @@ function MaxsulotKrim() {
     useEffect(()=>{
         const starCountRef = ref(db, 'maxsulotkrim');
         onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        console.log((data));
+        const data = snapshot.val();        
         if (data) {
             setMal(Object.values(data))
         }
@@ -65,7 +63,7 @@ function MaxsulotKrim() {
 
   return (
     <div className="w-full">
-    <div className="flex flex-col items-center w-full pt-20 pb-24 px-6">
+    <div className="flex flex-col items-center w-full gap-2      pt-20 pb-24 px-6">
 
 
     {mal.length==0 ? '': mal.map(m=>Royhat(m))}
