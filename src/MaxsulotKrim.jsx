@@ -49,7 +49,7 @@ function MaxsulotKrim() {
             setMn(k.joy)
             setSom(k.narx.slice(0, -3))
             setMd(!md)
-            localStorage.setItem('vq', '')
+            
         }
         return(
             <div className="w-full hg h-[134px] bg-[#1E2139] rounded-lg text-white flex p-5 justify-between" key={m.vaqat}>
@@ -80,7 +80,8 @@ function MaxsulotKrim() {
         writeUserData(soat, mn, som);
         setMd(!md)
         setMn('');
-        setSom('')
+        setSom('');
+        localStorage.setItem('vq', '')
     }
   return (
     <div className="w-full">
