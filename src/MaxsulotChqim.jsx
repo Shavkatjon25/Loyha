@@ -83,8 +83,8 @@ function MaxsulotChqim() {
     </div>
 
 
-    <div className={`w-full h-[100vh] fixed bg-[#0000005b] top-0 justify-center items-center z-30 ${md ? 'flex' : 'hidden'}`} onClick={()=>setMd(!md)}>
-        <div className="w-[340px] flex flex-col gap-8 rounded-2xl bg-black px-5 py-10" onClick={e=>e.stopPropagation()}>
+    <div className={`w-full h-[100vh] fixed bg-[#0000005b] top-0 justify-center z-30 pt-5 ${md ? 'flex' : 'hidden'}`} onClick={()=>setMd(!md)}>
+        <div className="w-[340px] h-[260px] flex flex-col gap-8 rounded-2xl bg-slate-500 px-5 py-10" onClick={e=>e.stopPropagation()}>
             <input type="text" placeholder="Joyni " value={mn} onChange={e=>setMn(e.target.value)} className="h-10 rounded-md p-5 text-3xl" />
             <input type="number" value={som} onChange={e=>setSom(e.target.value)} placeholder="Narh"  className="h-10 rounded-md p-5 text-3xl" />
             <button className="w-full bg-blue-500 text-white py-2 text-2xl rounded-full" onClick={Hendl}>Add</button>
