@@ -14,6 +14,7 @@ function writeUserData(soat, mn, som ) {
     vaqat:soat,
     name:localStorage.getItem('name')
   });
+ 
 }
 
 function MaxsulotKrim() {
@@ -43,6 +44,13 @@ function MaxsulotKrim() {
 
 
     function Royhat(m){
+        function edit(k){
+            localStorage.setItem('vq', k.vaqat)
+            setMn(k.joy)
+            setSom(k.narx.slice(0, -3))
+            setMd(!md)
+            localStorage.setItem('vq', '')
+        }
         return(
             <div className="w-full hg h-[134px] bg-[#1E2139] rounded-lg text-white flex p-5 justify-between" key={m.vaqat}>
             <div>
@@ -50,7 +58,10 @@ function MaxsulotKrim() {
                 <h4>{m.vaqat.slice(0, -4)}</h4>
                 <p>{(+m.narx).toLocaleString('it-IT', { style: 'decimal', currency: 'som'})}</p>
             </div>
+            <div>
             <h2>{m.name}</h2>
+            <button className="mt-5 px-3 py-1 bg-blue-500 rounded-sm" onClick={()=>edit(m)}>Edit</button>
+            </div>
         </div>
         )
     }
@@ -65,7 +76,7 @@ function MaxsulotKrim() {
             return;
         };
         const dt=new Date();
-        const soat=dt.getDay()+'-'+dt.getMonth()+'-'+dt.getFullYear()+'__'+dt.getHours()+':'+(dt.getMinutes()<10 ? 0+dt.getMinutes() : dt.getMinutes())+':'+dt.getMilliseconds();
+        const soat=localStorage.getItem('vq') ? localStorage.getItem('vq'):dt.getDay()+'-'+dt.getMonth()+'-'+dt.getFullYear()+'__'+dt.getHours()+':'+(dt.getMinutes()<10 ? 0+dt.getMinutes() : dt.getMinutes())+':'+dt.getMilliseconds();
         writeUserData(soat, mn, som);
         setMd(!md)
         setMn('');
