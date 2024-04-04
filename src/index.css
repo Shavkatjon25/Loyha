@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.sd{
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FFDD1B, 0 0 35px #FFDD1B, 0 0 40px #FFDD1B, 0 0 50px #FFDD1B, 0 0 75px #FFDD1B;
+}
+
+.shd{
+  box-shadow: 0;
+}
+
+.an{
+  animation: spin1 2s linear forwards;
+}
+
+@keyframes spin1 {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(360deg);
+   
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #FFDD1B, 0 0 25px #FFDD1B, 0 0 10px #FFDD1B, 0 0 24px #FFDD1B, 0 0 35px #FFDD1B;
+  }
+}
