@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 import { ref, set, onValue } from "firebase/database";
 import { db } from "./Firebase";
 import Foot from "./Foot";
-import Logo from "./Logo";
+import { useNavigate } from "react-router-dom";
+
 
 
 function writeUserData(soat, mn, som ) {
@@ -15,13 +16,18 @@ function writeUserData(soat, mn, som ) {
   });
 }
 
+
 function Kirim() {
     const [md, setMd]=useState(false)
     const [mn, setMn]=useState('');
     const [som, setSom]=useState('');
     const [mal, setMal]=useState([])
+    const nv=useNavigate();
 
-    useEffect(()=>{
+       useEffect(()=>{
+        if (localStorage.getItem('pr')!=2345) {
+            nv('/')
+        }
         const starCountRef = ref(db, 'krim');
         onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();    

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { ref, set, onValue } from "firebase/database";
 import { db } from "./Firebase";
 import Foot from "./Foot";
+import { useNavigate } from "react-router-dom";
 
 
 function writeUserData(soat, mn, som ) {
@@ -19,8 +20,11 @@ function Chqim() {
     const [mn, setMn]=useState('');
     const [som, setSom]=useState('');
     const [mal, setMal]=useState([])
-
+    const nv=useNavigate();
     useEffect(()=>{
+        if (localStorage.getItem('pr')!=2345) {
+            nv('/')
+        }
         const starCountRef = ref(db, 'chqim');
         onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();    
@@ -28,6 +32,7 @@ function Chqim() {
             setMal(Object.values(data))
         }
 });
+
     }, [])
 
 
